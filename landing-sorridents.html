@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta RCP Coletivo - Dados do Profissional</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --background: hsl(220 20% 97%);
+    --foreground: hsl(222 47% 11%);
+    --card: hsl(0 0% 100%);
+    --primary: hsl(215 77% 39%);
+    --primary-hover: hsl(215 77% 30%);
+    --primary-foreground: hsl(0 0% 100%);
+    --primary-soft: hsl(215 77% 39% / 0.1);
+    --primary-ring: hsl(215 77% 39% / 0.3);
+    --muted-foreground: hsl(220 10% 46%);
+    --border: hsl(220 16% 90%);
+    --input-bg: hsl(0 0% 100%);
+    --destructive: hsl(0 72% 51%);
+    --success: hsl(152 60% 40%);
+    --slate-200: hsl(220 14% 91%);
+    --slate-400: hsl(218 11% 65%);
+    --radius: 0.75rem;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Plus Jakarta Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+    background: hsl(210 40% 98%);
+    color: var(--foreground);
+    margin: 0;
+    padding: 32px 16px 100px;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, hsl(215 77% 39% / 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .container { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; transition: max-width 0.2s ease; }
+  .container.com-plano { max-width: 960px; }
+  .layout-row { display: flex; gap: 20px; align-items: flex-start; }
+  #form-card { flex: 1 1 auto; min-width: 0; }
+  .plano-fixo-card {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 24px;
+    padding: 24px 22px;
+  }
+  .plano-fixo-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .plano-fixo-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--foreground); }
+  .plano-fixo-card p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+  .plano-fixo-lmg { margin-top: 10px !important; font-weight: 700; color: var(--primary) !important; }
+  .plano-fixo-premio {
+    margin-top: 12px !important;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .plano-fixo-premio strong { display: block; font-size: 22px; color: var(--primary) !important; line-height: 1.2; }
+  .plano-fixo-premio span { font-size: 12px; color: var(--muted-foreground); }
+  .plano-fixo-header {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+    width: 100%; background: none; border: none; padding: 0; margin: 0;
+    font-family: inherit; text-align: left; cursor: default;
+  }
+  .plano-fixo-chevron { display: none; flex-shrink: 0; margin-top: 4px; color: var(--muted-foreground); transition: transform 0.2s ease; }
+  @media (max-width: 860px) {
+    .layout-row { flex-direction: column; }
+    .plano-fixo-card { position: static; width: 100%; flex-basis: auto; order: -1; }
+    .plano-fixo-header { cursor: pointer; }
+    .plano-fixo-chevron { display: block; }
+    .plano-fixo-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; }
+    .plano-fixo-content-inner { overflow: hidden; min-height: 0; }
+    .plano-fixo-content-inner p { padding-top: 12px; }
+    .plano-fixo-card.aberto .plano-fixo-content { grid-template-rows: 1fr; }
+    .plano-fixo-card.aberto .plano-fixo-chevron { transform: rotate(180deg); }
+  }
+  h1 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+    margin: 0 0 4px;
+  }
+  .subtitulo {
+    color: var(--muted-foreground);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  .card {
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    padding: 28px 24px;
+    box-shadow: 0 20px 60px -15px rgb(0 0 0 / 0.12);
+  }
+  #welcome-screen, #confirmacao-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: hsl(220 20% 97%);
+    z-index: 100;
+    overflow: hidden;
+    transition: opacity 0.7s ease;
+  }
+  #welcome-screen::before, #confirmacao-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, hsl(215 77% 39% / 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, hsl(215 77% 39% / 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  #welcome-screen.saindo { opacity: 0; }
+  #welcome-card-wrap, .confirmacao-card-wrap {
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+    animation: welcome-in 0.7s ease both;
+    transition: transform 0.7s ease;
+  }
+  #welcome-screen.saindo #welcome-card-wrap { transform: scale(0.95) translateY(16px); }
+  @keyframes welcome-in {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .welcome-logo { display: flex; justify-content: center; margin-bottom: 36px; }
+  .welcome-logo img { height: 72px; object-fit: contain; }
+  .welcome-card { text-align: center; padding: 40px 32px; }
+  .welcome-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(to bottom right, hsl(215 77% 39% / 0.15), hsl(215 77% 39% / 0.05));
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: inset 0 1px 2px hsl(215 77% 39% / 0.15);
+  }
+  .welcome-titulo { font-size: 26px; margin: 0 0 6px; color: var(--foreground); }
+  .welcome-subtitulo { color: var(--muted-foreground); font-size: 16px; line-height: 1.5; margin: 0 0 28px; }
+  #btn-comecar {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: 999px;
+    padding: 16px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 24px hsl(215 77% 39% / 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  #btn-comecar:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 30px hsl(215 77% 39% / 0.4); }
+
+  #landing-screen { margin: -32px -16px -100px; background: hsl(0 0% 100%); font-weight: 500; }
+  #landing-screen h1, #landing-screen h2, #landing-screen h3, #landing-screen h4 { font-weight: 800; }
+  .landing-accent { color: var(--primary); }
+  .landing-logo { height: 40px; object-fit: contain; }
+  .landing-logo-sep { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+  .landing-hero-logos { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+
+  .landing-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 48px;
+    padding: 48px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .landing-hero-text { text-align: left; display: flex; flex-direction: column; }
+  .landing-hero-copy { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .landing-hero-image { position: relative; max-width: 340px; margin-left: auto; align-self: center; }
+  .landing-hero-blob {
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 85%; height: 85%;
+    background: var(--primary-soft);
+    border-radius: 3rem;
+    z-index: 0;
+  }
+  .landing-hero-image img {
+    position: relative; z-index: 1;
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px -15px rgb(0 0 0 / 0.25);
+  }
+  .landing-hero h1 { font-size: 34px; line-height: 1.2; margin: 0 0 14px; letter-spacing: -0.01em; color: var(--foreground); }
+  .landing-hero p { font-size: 16px; line-height: 1.6; color: var(--muted-foreground); margin: 0 0 28px; }
+  .landing-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 760px) {
+    .landing-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+    .landing-hero-text { text-align: center; }
+    .landing-hero-logos { justify-content: center; }
+    .landing-hero-image { order: -1; max-width: 260px; margin: 0 auto; }
+    .landing-hero-blob { display: none; }
+    .landing-hero-ctas { justify-content: center; }
+  }
+  .landing-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary); color: var(--primary-foreground);
+    text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px hsl(215 77% 39% / 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border: none; cursor: pointer;
+  }
+  .landing-cta:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 30px hsl(215 77% 39% / 0.4); }
+  .landing-cta-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--primary);
+    text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 13px 26px;
+    border: 1.5px solid var(--primary);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+  .landing-cta-outline:hover { background: var(--primary-soft); }
+
+  .landing-badges {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
+    padding: 32px 20px;
+    background: var(--background);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-badge { display: flex; align-items: center; gap: 10px; }
+  .landing-badge-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-badge span { font-size: 14px; font-weight: 700; color: var(--foreground); }
+  .landing-badge-logo { height: 34px; width: auto; }
+
+  .landing-banner {
+    display: flex; align-items: center; gap: 20px; justify-content: center;
+    flex-wrap: wrap;
+    background: var(--foreground);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .landing-banner-icon {
+    width: 56px; height: 56px; flex-shrink: 0;
+    background: hsl(0 0% 100% / 0.1);
+    color: #fff;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-banner p { margin: 0; max-width: 560px; color: #fff; font-size: 19px; font-weight: 700; line-height: 1.4; text-align: left; }
+  @media (max-width: 500px) { .landing-banner p { text-align: center; } }
+
+  .landing-planos { padding: 64px 20px; max-width: 1040px; margin: 0 auto; text-align: center; }
+  .landing-planos h2 { font-size: 28px; margin: 0 0 8px; color: var(--foreground); }
+  .landing-planos-sub { font-size: 15px; color: var(--muted-foreground); margin: 0 0 28px; }
+  .landing-planos-aviso {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--primary-soft);
+    border: 1px solid hsl(215 77% 39% / 0.2);
+    border-radius: 1rem;
+    padding: 16px 20px;
+    margin: 0 0 16px;
+    text-align: left;
+  }
+  .landing-planos-aviso-icon { flex-shrink: 0; color: var(--primary); margin-top: 1px; }
+  .landing-planos-aviso p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--foreground); }
+  .landing-planos-aviso strong { color: var(--primary); }
+  .landing-planos-guia {
+    display: flex; flex-direction: column; gap: 6px;
+    text-align: left;
+    margin: 0 0 36px;
+    padding: 0 4px;
+  }
+  .landing-planos-guia p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+  .landing-planos-guia strong { color: var(--foreground); }
+  .landing-planos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: start; }
+  .landing-plano-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: 0 4px 16px -8px rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .landing-plano-toggle {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width: 100%;
+    background: none;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .landing-plano-toggle:hover { background: var(--primary-soft); }
+  .landing-plano-toggle-chevron { transition: transform 0.2s ease; flex-shrink: 0; }
+  .landing-plano-card.aberto .landing-plano-toggle-chevron { transform: rotate(180deg); }
+  .landing-plano-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+  }
+  .landing-plano-card.aberto .landing-plano-drawer { grid-template-rows: 1fr; }
+  .landing-plano-drawer-inner { overflow: hidden; min-height: 0; }
+  .landing-plano-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -12px rgb(0 0 0 / 0.18); }
+  .landing-plano-icon {
+    width: 48px; height: 48px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .landing-plano-icon img { width: 28px; height: 28px; object-fit: contain; }
+  .landing-plano-card h3 { margin: 0 0 14px; font-size: 19px; color: var(--foreground); }
+  .landing-checklist { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-direction: column; gap: 9px; min-height: 96px; }
+  .landing-checklist li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--foreground);
+  }
+  .landing-checklist li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 16px; height: 16px; margin-top: 2px;
+    background: var(--primary);
+    -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
+    mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
+    border-radius: 999px;
+  }
+  .landing-plano-btn {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    background: var(--primary); color: var(--primary-foreground);
+    border: none; border-radius: 999px;
+    padding: 12px 20px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .landing-plano-btn:hover { background: var(--primary-hover); }
+  .landing-precos-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    font-size: 13px;
+  }
+  .landing-precos-tabela th {
+    text-align: left;
+    color: var(--muted-foreground);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-precos-tabela td {
+    padding: 8px 0;
+    color: var(--foreground);
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-precos-tabela td:last-child { text-align: right; font-weight: 700; }
+  .landing-precos-tabela tr:has(input:checked) td {
+    background: var(--primary-soft);
+    padding-top: 10px; padding-bottom: 10px;
+  }
+  .landing-precos-tabela tr:has(input:checked) td:first-child { padding-left: 8px; border-radius: 8px 0 0 8px; }
+  .landing-precos-tabela tr:has(input:checked) td:last-child { padding-right: 8px; border-radius: 0 8px 8px 0; }
+  .landing-lmg-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .landing-lmg-label input[type="radio"] { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--primary); cursor: pointer; }
+  .landing-precos-badge {
+    display: block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase;
+    color: var(--primary); margin-top: 2px;
+  }
+  .landing-precos-nota { font-size: 11px; color: var(--muted-foreground); margin: 10px 0 16px; }
+
+  .landing-coberturas { padding: 64px 20px; background: var(--background); border-top: 1px solid var(--border); }
+  .landing-coberturas h2 { text-align: center; font-size: 28px; margin: 0 0 36px; color: var(--foreground); }
+  .landing-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 24px; max-width: 1040px; margin: 0 auto; }
+  .landing-step { display: flex; align-items: flex-start; gap: 14px; text-align: left; }
+  .landing-step-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: #fff;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-step h4 { margin: 0 0 4px; font-size: 15px; color: var(--foreground); }
+  .landing-step p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+
+  .landing-final-cta {
+    background: var(--foreground);
+    padding: 56px 20px;
+    text-align: center;
+  }
+  .landing-final-cta h2 { color: #fff; font-size: 26px; line-height: 1.3; margin: 0 0 26px; }
+
+  .landing-footer { padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); }
+  .landing-footer-logos { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 10px; }
+  .landing-footer-logo { height: 28px; object-fit: contain; opacity: 0.85; }
+  .landing-footer p { margin: 0; font-size: 12px; color: var(--muted-foreground); }
+
+  @media (max-width: 600px) {
+    .landing-hero h1 { font-size: 27px; }
+    .landing-badges { gap: 22px; }
+    .landing-badge:nth-child(2) { order: -2; }
+    .landing-badge:nth-child(3) { order: -1; }
+    .landing-final-cta h2 { font-size: 22px; }
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  fieldset.step { display: none; }
+  fieldset.step.ativo { display: block; }
+  legend {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    padding: 0;
+    margin: 0 0 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px 16px;
+  }
+  .campo { display: flex; flex-direction: column; gap: 6px; }
+  .campo.full { grid-column: 1 / -1; }
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+  label .opcional { color: var(--muted-foreground); font-weight: 400; }
+  label .obrig { color: var(--destructive); }
+  .cpf-status { display: block; font-size: 12px; margin-top: 4px; color: var(--muted-foreground); }
+  .cpf-status.erro { color: var(--destructive); }
+  .cpf-status.sucesso { color: var(--success); }
+  input[type=text], input[type=email], select, textarea {
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--input-bg);
+    color: var(--foreground);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea { height: auto; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-ring);
+  }
+  input[readonly] { background: hsl(220 16% 96%); color: var(--muted-foreground); }
+  textarea { resize: vertical; min-height: 60px; }
+  .radios { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  .radios label {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 400; cursor: pointer;
+  }
+  .checkboxes { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .checkboxes label {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 400; cursor: pointer;
+  }
+  input[type=radio], input[type=checkbox] {
+    accent-color: var(--primary);
+    width: 16px; height: 16px;
+    cursor: pointer;
+  }
+  .modalidade-cards { display: flex; flex-direction: column; gap: 10px; }
+  .modalidade-card {
+    display: flex; align-items: flex-start; gap: 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .modalidade-card:hover { border-color: var(--primary); }
+  .modalidade-card input[type=radio] { margin-top: 3px; flex-shrink: 0; }
+  .modalidade-card .titulo { font-weight: 600; display: block; }
+  .modalidade-card .desc { font-weight: 400; font-size: 13px; color: var(--muted-foreground); display: block; margin-top: 2px; }
+  .modalidade-card:has(input:checked) {
+    border-color: var(--primary);
+    background: hsl(215 77% 39% / 0.06);
+  }
+  .condicional {
+    border-left: 3px solid var(--primary);
+    background: hsl(215 77% 39% / 0.06);
+    padding: 14px 16px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 12px;
+    display: none;
+  }
+  .condicional.show { display: block; }
+  .rodape {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+  }
+  button {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #btn-gerar, #btn-avancar {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 20px hsl(215 77% 39% / 0.25);
+  }
+  #btn-gerar:hover, #btn-avancar:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  #status {
+    font-size: 13px;
+    color: var(--muted-foreground);
+    margin-right: auto;
+  }
+  #status.ok { color: var(--success); font-weight: 500; }
+  #status.erro { color: var(--destructive); font-weight: 500; }
+
+  .progresso {
+    position: relative;
+    margin: 0 0 22px;
+  }
+  .progresso-trilha {
+    position: absolute;
+    top: 17px;
+    height: 2px;
+    background: var(--slate-200);
+    border-radius: 999px;
+    z-index: 0;
+  }
+  .progresso-trilha-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 999px;
+    transition: width 0.4s;
+  }
+  .progresso-passos {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .progresso-passo { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+  .progresso .bolinha {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--slate-200);
+    color: var(--slate-400);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .progresso .bolinha.feito { background: var(--primary); color: #fff; }
+  .progresso .bolinha.atual { background: hsl(215 70% 93%); color: var(--primary); box-shadow: 0 0 0 2px var(--primary); position: relative; z-index: 2; }
+  .progresso .bolinha.feito { position: relative; z-index: 2; }
+  .progresso .rotulo {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 5.5rem;
+    color: var(--muted-foreground);
+  }
+  .progresso .rotulo.atual { font-weight: 600; color: var(--primary); }
+
+  #btn-voltar { background: #fff; color: var(--foreground); border: 1px solid var(--border) !important; box-shadow: none; }
+  #btn-voltar:hover { background: hsl(220 16% 96%); transform: none; }
+</style>
+</head>
+<body>
+<div id="landing-screen">
+  <section class="landing-hero">
+    <div class="landing-hero-text">
+      <div class="landing-hero-logos">
+        <img src="logo-fbn.png?v=2" alt="Grupo FBN" class="landing-logo">
+        <span class="landing-logo-sep"></span>
+        <img src="logo-sorridents.png" alt="Sorridents Clínicas Odontológicas" class="landing-logo">
+      </div>
+      <div class="landing-hero-copy">
+        <h1>Proteção jurídica <span class="landing-accent">para sua carreira odontológica</span></h1>
+        <p>Seguro de Responsabilidade Civil Profissional pensado para dentistas Sorridents. Escolha sua cobertura e contrate em poucos minutos, sem burocracia.</p>
+        <div class="landing-hero-ctas">
+          <a href="#landing-planos" class="landing-cta">
+            Ver coberturas
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="landing-hero-image">
+      <div class="landing-hero-blob"></div>
+      <img src="hero-dentista.png" alt="Dentista atendendo paciente em consultório moderno">
+    </div>
+  </section>
+
+  <section class="landing-badges">
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <span>Fornecedor homologado ABF</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <span>100% digital</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <span>Contrate em poucos minutos</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span>Desde 1996 protegendo carreiras</span>
+    </div>
+  </section>
+
+  <section class="landing-banner">
+    <div class="landing-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+    <p>Você não precisa errar para ser processado. Proteja sua carreira antes que seja tarde.</p>
+  </section>
+
+  <section class="landing-planos" id="landing-planos">
+    <h2>Escolha sua <span class="landing-accent">cobertura</span></h2>
+    <p class="landing-planos-sub">Selecione a cobertura ideal para a sua rotina clínica.</p>
+    <div class="landing-planos-aviso">
+      <div class="landing-planos-aviso-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+      <p>Atente-se aos procedimentos que você realiza, mesmo que esporadicamente. A cobertura precisa incluir TODOS os procedimentos que você executa na sua rotina. Se você realiza cirurgia bucomaxilofacial, odontologia estética, harmonização facial ou toxina botulínica ainda que raramente, é preciso contratar a cobertura correspondente. Caso contrário, em um eventual processo, o sinistro relacionado a um procedimento fora da cobertura contratada pode não ser indenizado.</p>
+    </div>
+    <div class="landing-planos-guia">
+      <p><strong>Cobertura Básica</strong> — não realiza cirurgia bucomaxilofacial nem procedimentos estéticos.</p>
+      <p><strong>Cobertura Avançada</strong> — realiza cirurgia bucomaxilofacial e/ou odontologia com prática estética.</p>
+      <p><strong>Cobertura Completa</strong> — realiza também harmonização facial e/ou aplicação de toxina botulínica.</p>
+    </div>
+    <div class="landing-planos-grid">
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Básica</h3>
+        <ul class="landing-checklist">
+          <li>Implante, cirurgia e ortodontia (sem estética)</li>
+          <li>Demais especialidades odontológicas</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 240,64</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 343,77</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 515,65</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 742,54</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 1.062,24</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="600000"><span class="landing-lmg-value">R$ 600.000</span></label></td><td>R$ 1.165,37</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="1">Continuar com a Cobertura Básica</button>
+          </div>
+        </div>
+      </div>
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Avançada</h3>
+        <ul class="landing-checklist">
+          <li>Tudo da Cobertura Básica</li>
+          <li>Cirurgia bucomaxilofacial</li>
+          <li>Odontologia com prática estética</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="50000"><span class="landing-lmg-value">R$ 50.000</span></label></td><td>R$ 457,90</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 641,06</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 915,80</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 1.373,69</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 1.978,12</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 2.829,81</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="2">Continuar com a Cobertura Avançada</button>
+          </div>
+        </div>
+      </div>
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Completa</h3>
+        <ul class="landing-checklist">
+          <li>Tudo da Cobertura Avançada</li>
+          <li>Harmonização facial</li>
+          <li>Aplicação de toxina botulínica</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="50000"><span class="landing-lmg-value">R$ 50.000</span></label></td><td>R$ 625,66</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 875,92</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 1.251,31</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 1.876,97</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 2.702,84</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 3.866,56</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="3">Continuar com a Cobertura Completa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-coberturas" id="landing-coberturas">
+    <h2>O que está <span class="landing-accent">incluso</span></h2>
+    <div class="landing-steps">
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <h4>Retroatividade</h4>
+          <p>Cobertura para procedimentos realizados antes da contratação do seguro.</p>
+        </div>
+      </div>
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+        <div>
+          <h4>Indenização a terceiros</h4>
+          <p>Proteção financeira para danos materiais, corporais e morais causados no exercício da profissão.</p>
+        </div>
+      </div>
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div>
+          <h4>Custos de defesa</h4>
+          <p>Cobre honorários advocatícios e despesas legais em processos judiciais.</p>
+        </div>
+      </div>
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+        <div>
+          <h4>Suporte em sinistros</h4>
+          <p>Acompanhamento junto à seguradora do início ao fim do processo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-final-cta">
+    <h2>Proteja sua carreira.<br>Escolha sua cobertura agora.</h2>
+    <a href="#landing-planos" class="landing-cta">Ver coberturas</a>
+  </section>
+
+  <footer class="landing-footer">
+    <div class="landing-footer-logos">
+      <img src="logo-fbn.png?v=2" alt="Grupo FBN" class="landing-footer-logo">
+      <span class="landing-logo-sep"></span>
+      <img src="logo-abf.png?v=2" alt="Associado ABF - Associação Brasileira de Franchising" class="landing-footer-logo">
+    </div>
+    <p>Confiança não tem preço, tem valor.</p>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll(".landing-plano-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.closest(".landing-plano-card").classList.toggle("aberto");
+  });
+});
+document.querySelectorAll(".landing-plano-btn[data-plano]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".landing-plano-card");
+    const lmgChecked = card?.querySelector('input[type="radio"]:checked');
+    const lmg = lmgChecked ? lmgChecked.dataset.lmg : "";
+    window.location.href = "?plano=" + btn.dataset.plano + (lmg ? "&lmg=" + lmg : "");
+  });
+});
+</script>
+</body>
+</html>

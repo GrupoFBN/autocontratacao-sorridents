@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proteção para dentistas Sorridents | Grupo FBN</title>
+<meta name="description" content="Seguro de Responsabilidade Civil para dentistas. Contrate 100% digital, em poucos minutos.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Grupo FBN">
+<meta property="og:title" content="Proteção para dentistas Sorridents">
+<meta property="og:description" content="Seguro de Responsabilidade Civil para dentistas. Contrate 100% digital, em poucos minutos.">
+<meta property="og:url" content="https://franquiaprotegida.com.br/sorridents/rcp/">
+<meta property="og:image" content="https://franquiaprotegida.com.br/sorridents/rcp/og-sorridents-3.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Proteção para dentistas Sorridents, com a dentista atendendo em consultório">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proteção para dentistas Sorridents">
+<meta name="twitter:description" content="Seguro de Responsabilidade Civil para dentistas. Contrate 100% digital, em poucos minutos.">
+<meta name="twitter:image" content="https://franquiaprotegida.com.br/sorridents/rcp/og-sorridents-3.jpg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --background: hsl(220 20% 97%);
+    --foreground: hsl(222 47% 11%);
+    --card: hsl(0 0% 100%);
+    --primary: hsl(215 77% 39%);
+    --primary-hover: hsl(215 77% 30%);
+    --primary-foreground: hsl(0 0% 100%);
+    --primary-soft: hsl(215 77% 39% / 0.1);
+    --primary-ring: hsl(215 77% 39% / 0.3);
+    --muted-foreground: hsl(220 10% 46%);
+    --border: hsl(220 16% 90%);
+    --input-bg: hsl(0 0% 100%);
+    --destructive: hsl(0 72% 51%);
+    --success: hsl(152 60% 40%);
+    --slate-200: hsl(220 14% 91%);
+    --slate-400: hsl(218 11% 65%);
+    --radius: 0.75rem;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Plus Jakarta Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+    background: hsl(210 40% 98%);
+    color: var(--foreground);
+    margin: 0;
+    padding: 32px 16px 100px;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, hsl(215 77% 39% / 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .container { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; transition: max-width 0.2s ease; }
+  .container.com-plano { max-width: 960px; }
+  .layout-row { display: flex; gap: 20px; align-items: flex-start; }
+  #form-card { flex: 1 1 auto; min-width: 0; }
+  .plano-fixo-card {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 24px;
+    padding: 24px 22px;
+  }
+  .plano-fixo-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .plano-fixo-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--foreground); }
+  .plano-fixo-card p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+  .plano-fixo-lmg { margin-top: 10px !important; font-weight: 700; color: var(--primary) !important; }
+  .plano-fixo-premio {
+    margin-top: 12px !important;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .plano-fixo-premio strong { display: block; font-size: 22px; color: var(--primary) !important; line-height: 1.2; }
+  .plano-fixo-premio span { font-size: 12px; color: var(--muted-foreground); }
+  .plano-fixo-header {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+    width: 100%; background: none; border: none; padding: 0; margin: 0;
+    font-family: inherit; text-align: left; cursor: default;
+  }
+  .plano-fixo-chevron { display: none; flex-shrink: 0; margin-top: 4px; color: var(--muted-foreground); transition: transform 0.2s ease; }
+  @media (max-width: 860px) {
+    .layout-row { flex-direction: column; }
+    .plano-fixo-card { position: static; width: 100%; flex-basis: auto; order: -1; }
+    .plano-fixo-header { cursor: pointer; }
+    .plano-fixo-chevron { display: block; }
+    .plano-fixo-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; }
+    .plano-fixo-content-inner { overflow: hidden; min-height: 0; }
+    .plano-fixo-content-inner p { padding-top: 12px; }
+    .plano-fixo-card.aberto .plano-fixo-content { grid-template-rows: 1fr; }
+    .plano-fixo-card.aberto .plano-fixo-chevron { transform: rotate(180deg); }
+  }
+  h1 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+    margin: 0 0 4px;
+  }
+  .subtitulo {
+    color: var(--muted-foreground);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+  .card {
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    padding: 28px 24px;
+    box-shadow: 0 20px 60px -15px rgb(0 0 0 / 0.12);
+  }
+  #welcome-screen, #confirmacao-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: hsl(220 20% 97%);
+    z-index: 100;
+    overflow: hidden;
+    transition: opacity 0.7s ease;
+  }
+  #welcome-screen::before, #confirmacao-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, hsl(215 77% 39% / 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, hsl(215 77% 39% / 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  #welcome-screen.saindo { opacity: 0; }
+  #welcome-card-wrap, .confirmacao-card-wrap {
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+    animation: welcome-in 0.7s ease both;
+    transition: transform 0.7s ease;
+  }
+  #welcome-screen.saindo #welcome-card-wrap { transform: scale(0.95) translateY(16px); }
+  @keyframes welcome-in {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .welcome-logo { display: flex; justify-content: center; margin-bottom: 36px; }
+  .welcome-logo img { height: 72px; object-fit: contain; }
+  .welcome-card { text-align: center; padding: 40px 32px; }
+  .welcome-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(to bottom right, hsl(215 77% 39% / 0.15), hsl(215 77% 39% / 0.05));
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: inset 0 1px 2px hsl(215 77% 39% / 0.15);
+  }
+  .welcome-titulo { font-size: 26px; margin: 0 0 6px; color: var(--foreground); }
+  .welcome-subtitulo { color: var(--muted-foreground); font-size: 16px; line-height: 1.5; margin: 0 0 28px; }
+  #btn-comecar {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    border-radius: 999px;
+    padding: 16px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 24px hsl(215 77% 39% / 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  #btn-comecar:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 30px hsl(215 77% 39% / 0.4); }
+  .welcome-aviso { margin: 18px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted-foreground); text-align: left; }
+  .welcome-aviso a, .landing-footer a { color: var(--primary); }
+
+  #landing-screen { margin: -32px -16px -100px; background: hsl(0 0% 100%); font-weight: 500; }
+  #landing-screen h1, #landing-screen h2, #landing-screen h3, #landing-screen h4 { font-weight: 800; }
+  .landing-accent { color: var(--primary); }
+  .landing-logo { height: 40px; object-fit: contain; }
+  .landing-logo-sep { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+  .landing-hero-logos { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+
+  .landing-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 48px;
+    padding: 48px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .landing-hero-text { text-align: left; display: flex; flex-direction: column; }
+  .landing-hero-copy { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .landing-hero-image { position: relative; max-width: 340px; margin-left: auto; align-self: center; }
+  .landing-hero-blob {
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 85%; height: 85%;
+    background: var(--primary-soft);
+    border-radius: 3rem;
+    z-index: 0;
+  }
+  .landing-hero-image img {
+    position: relative; z-index: 1;
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px -15px rgb(0 0 0 / 0.25);
+  }
+  .landing-hero h1 { font-size: 34px; line-height: 1.2; margin: 0 0 14px; letter-spacing: -0.01em; color: var(--foreground); }
+  .landing-hero p { font-size: 16px; line-height: 1.6; color: var(--muted-foreground); margin: 0 0 28px; }
+  .landing-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 760px) {
+    .landing-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+    .landing-hero-text { text-align: center; }
+    .landing-hero-logos { justify-content: center; }
+    .landing-hero-image { order: -1; max-width: 260px; margin: 0 auto; }
+    .landing-hero-blob { display: none; }
+    .landing-hero-ctas { justify-content: center; }
+  }
+  .landing-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary); color: var(--primary-foreground);
+    text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px hsl(215 77% 39% / 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border: none; cursor: pointer;
+  }
+  .landing-cta:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 30px hsl(215 77% 39% / 0.4); }
+  .landing-cta-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--primary);
+    text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 13px 26px;
+    border: 1.5px solid var(--primary);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+  .landing-cta-outline:hover { background: var(--primary-soft); }
+
+  .landing-badges {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
+    padding: 32px 20px;
+    background: var(--background);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-badge { display: flex; align-items: center; gap: 10px; }
+  .landing-badge-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-badge span { font-size: 14px; font-weight: 700; color: var(--foreground); }
+  .landing-badge-logo { height: 34px; width: auto; }
+
+  .landing-banner {
+    display: flex; align-items: center; gap: 20px; justify-content: center;
+    flex-wrap: wrap;
+    background: var(--foreground);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .landing-banner-icon {
+    width: 56px; height: 56px; flex-shrink: 0;
+    background: hsl(0 0% 100% / 0.1);
+    color: #fff;
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-banner p { margin: 0; max-width: 560px; color: #fff; font-size: 19px; font-weight: 700; line-height: 1.4; text-align: left; }
+  @media (max-width: 500px) { .landing-banner p { text-align: center; } }
+
+  .landing-planos { padding: 64px 20px; max-width: 1040px; margin: 0 auto; text-align: center; }
+  .landing-planos h2 { font-size: 28px; margin: 0 0 8px; color: var(--foreground); }
+  .landing-planos-sub { font-size: 15px; color: var(--muted-foreground); margin: 0 0 28px; }
+  .landing-planos-aviso {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--primary-soft);
+    border: 1px solid hsl(215 77% 39% / 0.2);
+    border-radius: 1rem;
+    padding: 16px 20px;
+    margin: 0 0 16px;
+    text-align: left;
+  }
+  .landing-planos-aviso-icon { flex-shrink: 0; color: var(--primary); margin-top: 1px; }
+  .landing-planos-aviso p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--foreground); }
+  .landing-planos-aviso strong { color: var(--primary); }
+  .landing-planos-valores { margin: -16px 0 20px; padding: 12px 20px; align-items: center; }
+  .landing-planos-guia {
+    display: flex; flex-direction: column; gap: 6px;
+    text-align: left;
+    margin: 0 0 36px;
+    padding: 0 4px;
+  }
+  .landing-planos-guia p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+  .landing-planos-guia strong { color: var(--foreground); }
+  .landing-planos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: start; }
+  .landing-plano-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: 0 4px 16px -8px rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .landing-plano-toggle {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width: 100%;
+    background: none;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .landing-plano-toggle:hover { background: var(--primary-soft); }
+  .landing-plano-toggle-chevron { transition: transform 0.2s ease; flex-shrink: 0; }
+  .landing-plano-card.aberto .landing-plano-toggle-chevron { transform: rotate(180deg); }
+  .landing-plano-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+  }
+  .landing-plano-card.aberto .landing-plano-drawer { grid-template-rows: 1fr; }
+  .landing-plano-drawer-inner { overflow: hidden; min-height: 0; }
+  .landing-plano-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -12px rgb(0 0 0 / 0.18); }
+  .landing-plano-icon {
+    width: 48px; height: 48px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .landing-plano-icon img { width: 28px; height: 28px; object-fit: contain; }
+  .landing-plano-card h3 { margin: 0 0 14px; font-size: 19px; color: var(--foreground); }
+  .landing-checklist { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-direction: column; gap: 9px; min-height: 96px; }
+  .landing-checklist li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--foreground);
+  }
+  .landing-checklist li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 16px; height: 16px; margin-top: 2px;
+    background: var(--primary);
+    -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
+    mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="20 6 9 17 4 12"/%3E%3C/svg%3E') center / contain no-repeat;
+    border-radius: 999px;
+  }
+  .landing-plano-btn {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    background: var(--primary); color: var(--primary-foreground);
+    border: none; border-radius: 999px;
+    padding: 12px 20px;
+    font-family: inherit; font-size: 14px; font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .landing-plano-btn:hover { background: var(--primary-hover); }
+  .landing-precos-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    font-size: 13px;
+  }
+  .landing-precos-tabela th {
+    text-align: left;
+    color: var(--muted-foreground);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-precos-tabela td {
+    padding: 8px 0;
+    color: var(--foreground);
+    border-bottom: 1px solid var(--border);
+  }
+  .landing-precos-tabela td:last-child { text-align: right; font-weight: 700; }
+  .landing-precos-tabela tr:has(input:checked) td {
+    background: var(--primary-soft);
+    padding-top: 10px; padding-bottom: 10px;
+  }
+  .landing-precos-tabela tr:has(input:checked) td:first-child { padding-left: 8px; border-radius: 8px 0 0 8px; }
+  .landing-precos-tabela tr:has(input:checked) td:last-child { padding-right: 8px; border-radius: 0 8px 8px 0; }
+  .landing-lmg-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .landing-lmg-label input[type="radio"] { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--primary); cursor: pointer; }
+  .landing-precos-badge {
+    display: block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase;
+    color: var(--primary); margin-top: 2px;
+  }
+  .landing-precos-nota { font-size: 11px; color: var(--muted-foreground); margin: 10px 0 16px; }
+
+  .landing-coberturas { padding: 64px 20px; background: var(--background); border-top: 1px solid var(--border); }
+  .landing-coberturas h2 { text-align: center; font-size: 28px; margin: 0 0 36px; color: var(--foreground); }
+  .landing-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 24px; max-width: 1040px; margin: 0 auto; }
+  .landing-step { display: flex; align-items: flex-start; gap: 14px; text-align: left; }
+  .landing-step-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: #fff;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .landing-step h4 { margin: 0 0 4px; font-size: 15px; color: var(--foreground); }
+  .landing-step p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+
+  .landing-final-cta {
+    background: var(--foreground);
+    padding: 56px 20px;
+    text-align: center;
+  }
+  .landing-final-cta h2 { color: #fff; font-size: 26px; line-height: 1.3; margin: 0 0 26px; }
+
+  .landing-footer { padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); }
+  .landing-footer-logos { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 10px; }
+  .landing-footer-logo { height: 28px; object-fit: contain; opacity: 0.85; }
+  .landing-footer p { margin: 0; font-size: 12px; color: var(--muted-foreground); }
+  .landing-footer p + p { margin-top: 6px; }
+
+  @media (max-width: 600px) {
+    .landing-hero h1 { font-size: 27px; }
+    .landing-badges { gap: 22px; }
+    .landing-badge:nth-child(2) { order: -2; }
+    .landing-badge:nth-child(3) { order: -1; }
+    .landing-final-cta h2 { font-size: 22px; }
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  fieldset.step { display: none; }
+  fieldset.step.ativo { display: block; }
+  legend {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    padding: 0;
+    margin: 0 0 18px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px 16px;
+  }
+  .campo { display: flex; flex-direction: column; gap: 6px; }
+  .campo.full { grid-column: 1 / -1; }
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--foreground);
+  }
+  label .opcional { color: var(--muted-foreground); font-weight: 400; }
+  label .obrig { color: var(--destructive); }
+  .cpf-status { display: block; font-size: 12px; margin-top: 4px; color: var(--muted-foreground); }
+  .cpf-status.erro { color: var(--destructive); }
+  .cpf-status.sucesso { color: var(--success); }
+  input[type=text], input[type=email], select, textarea {
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--input-bg);
+    color: var(--foreground);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea { height: auto; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-ring);
+  }
+  input[readonly] { background: hsl(220 16% 96%); color: var(--muted-foreground); }
+  textarea { resize: vertical; min-height: 60px; }
+  .radios { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  .radios label {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 400; cursor: pointer;
+  }
+  .checkboxes { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .checkboxes label {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 400; cursor: pointer;
+  }
+  input[type=radio], input[type=checkbox] {
+    accent-color: var(--primary);
+    width: 16px; height: 16px;
+    cursor: pointer;
+  }
+  .modalidade-cards { display: flex; flex-direction: column; gap: 10px; }
+  .modalidade-card {
+    display: flex; align-items: flex-start; gap: 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .modalidade-card:hover { border-color: var(--primary); }
+  .modalidade-card input[type=radio] { margin-top: 3px; flex-shrink: 0; }
+  .modalidade-card .titulo { font-weight: 600; display: block; }
+  .modalidade-card .desc { font-weight: 400; font-size: 13px; color: var(--muted-foreground); display: block; margin-top: 2px; }
+  .modalidade-card:has(input:checked) {
+    border-color: var(--primary);
+    background: hsl(215 77% 39% / 0.06);
+  }
+  .condicional {
+    border-left: 3px solid var(--primary);
+    background: hsl(215 77% 39% / 0.06);
+    padding: 14px 16px;
+    border-radius: 0 12px 12px 0;
+    margin-top: 12px;
+    display: none;
+  }
+  .condicional.show { display: block; }
+  .rodape {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+  }
+  button {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #btn-gerar, #btn-avancar {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 20px hsl(215 77% 39% / 0.25);
+  }
+  #btn-gerar:hover, #btn-avancar:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  #status {
+    font-size: 13px;
+    color: var(--muted-foreground);
+    margin-right: auto;
+  }
+  #status.ok { color: var(--success); font-weight: 500; }
+  #status.erro { color: var(--destructive); font-weight: 500; }
+
+  .progresso {
+    position: relative;
+    margin: 0 0 22px;
+  }
+  .progresso-trilha {
+    position: absolute;
+    top: 17px;
+    height: 2px;
+    background: var(--slate-200);
+    border-radius: 999px;
+    z-index: 0;
+  }
+  .progresso-trilha-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 999px;
+    transition: width 0.4s;
+  }
+  .progresso-passos {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .progresso-passo { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+  .progresso .bolinha {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--slate-200);
+    color: var(--slate-400);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .progresso .bolinha.feito { background: var(--primary); color: #fff; }
+  .progresso .bolinha.atual { background: hsl(215 70% 93%); color: var(--primary); box-shadow: 0 0 0 2px var(--primary); position: relative; z-index: 2; }
+  .progresso .bolinha.feito { position: relative; z-index: 2; }
+  .progresso .rotulo {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 5.5rem;
+    color: var(--muted-foreground);
+  }
+  .progresso .rotulo.atual { font-weight: 600; color: var(--primary); }
+
+  #btn-voltar { background: #fff; color: var(--foreground); border: 1px solid var(--border) !important; box-shadow: none; }
+  #btn-voltar:hover { background: hsl(220 16% 96%); transform: none; }
+</style>
+</head>
+<body>
+<div id="landing-screen">
+  <section class="landing-hero">
+    <div class="landing-hero-text">
+      <div class="landing-hero-logos">
+        <img src="logo-fbn.png?v=2" alt="Grupo FBN" class="landing-logo">
+        <span class="landing-logo-sep"></span>
+        <img src="logo-sorridents.png" alt="Sorridents Clínicas Odontológicas" class="landing-logo">
+      </div>
+      <div class="landing-hero-copy">
+        <h1>Proteção jurídica <span class="landing-accent">para sua carreira odontológica</span></h1>
+        <p>Seguro de Responsabilidade Civil Profissional exclusivo para dentistas Sorridents. Escolha sua cobertura e contrate em poucos minutos, sem burocracia.</p>
+        <div class="landing-hero-ctas">
+          <a href="#landing-planos" class="landing-cta">
+            Ver coberturas
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="landing-hero-image">
+      <div class="landing-hero-blob"></div>
+      <img src="hero-dentista.png" alt="Dentista atendendo paciente em consultório moderno">
+    </div>
+  </section>
+
+  <section class="landing-badges">
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <span>Fornecedor homologado ABF</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <span>100% digital</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <span>Contrate em poucos minutos</span>
+    </div>
+    <div class="landing-badge">
+      <div class="landing-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span>Homologado Grupo Salus</span>
+    </div>
+  </section>
+
+  <section class="landing-banner">
+    <div class="landing-banner-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+    <p>Você não precisa errar para ser processado. Proteja sua carreira antes que seja tarde.</p>
+  </section>
+
+  <section class="landing-planos" id="landing-planos">
+    <h2>Escolha sua <span class="landing-accent">cobertura</span></h2>
+    <p class="landing-planos-sub">Selecione a cobertura ideal para a sua rotina clínica.</p>
+    <div class="landing-planos-aviso">
+      <div class="landing-planos-aviso-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+      <p>Atente-se aos procedimentos que você realiza, mesmo que esporadicamente. A cobertura precisa incluir TODOS os procedimentos que você executa na sua rotina. Se você realiza cirurgia bucomaxilofacial, odontologia estética, harmonização facial ou toxina botulínica ainda que raramente, é preciso contratar a cobertura correspondente. Caso contrário, em um eventual processo, o sinistro relacionado a um procedimento fora da cobertura contratada pode não ser indenizado.</p>
+    </div>
+    <div class="landing-planos-guia">
+      <p><strong>Cobertura Básica</strong> — não realiza cirurgia bucomaxilofacial nem procedimentos estéticos.</p>
+      <p><strong>Cobertura Avançada</strong> — realiza cirurgia bucomaxilofacial e/ou odontologia com prática estética.</p>
+      <p><strong>Cobertura Completa</strong> — realiza também harmonização facial e/ou aplicação de toxina botulínica.</p>
+    </div>
+    <div class="landing-planos-aviso landing-planos-valores">
+      <div class="landing-planos-aviso-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+      <p>Valores somente para <strong>seguro novo, sem retroatividade</strong>.</p>
+    </div>
+    <div class="landing-planos-grid">
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Básica</h3>
+        <ul class="landing-checklist">
+          <li>Implante, cirurgia e ortodontia (sem estética)</li>
+          <li>Demais especialidades odontológicas</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 240,64</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 343,77</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 515,65</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 742,54</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 1.062,24</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-1" data-lmg="600000"><span class="landing-lmg-value">R$ 600.000</span></label></td><td>R$ 1.165,37</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="1">Continuar com a Cobertura Básica</button>
+          </div>
+        </div>
+      </div>
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Avançada</h3>
+        <ul class="landing-checklist">
+          <li>Tudo da Cobertura Básica</li>
+          <li>Cirurgia bucomaxilofacial</li>
+          <li>Odontologia com prática estética</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="50000"><span class="landing-lmg-value">R$ 50.000</span></label></td><td>R$ 457,90</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 641,06</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 915,80</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 1.373,69</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 1.978,12</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-2" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 2.829,81</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="2">Continuar com a Cobertura Avançada</button>
+          </div>
+        </div>
+      </div>
+      <div class="landing-plano-card">
+        <div class="landing-plano-icon">
+          <img src="icone-fbn.png" alt="">
+        </div>
+        <h3>Cobertura Completa</h3>
+        <ul class="landing-checklist">
+          <li>Tudo da Cobertura Avançada</li>
+          <li>Harmonização facial</li>
+          <li>Aplicação de toxina botulínica</li>
+        </ul>
+        <button type="button" class="landing-plano-toggle">
+          Ver valores
+          <svg class="landing-plano-toggle-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="landing-plano-drawer">
+          <div class="landing-plano-drawer-inner">
+            <table class="landing-precos-tabela">
+              <thead><tr><th>Cobertura (LMG)</th><th>Prêmio anual</th></tr></thead>
+              <tbody>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="50000"><span class="landing-lmg-value">R$ 50.000</span></label></td><td>R$ 625,66</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="70000"><span class="landing-lmg-value">R$ 70.000</span></label></td><td>R$ 875,92</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="100000" checked><span><span class="landing-lmg-value">R$ 100.000</span><span class="landing-precos-badge">Mínimo recomendado</span></span></label></td><td>R$ 1.251,31</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="150000"><span class="landing-lmg-value">R$ 150.000</span></label></td><td>R$ 1.876,97</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="250000"><span class="landing-lmg-value">R$ 250.000</span></label></td><td>R$ 2.702,84</td></tr>
+                <tr><td><label class="landing-lmg-label"><input type="radio" name="lmg-3" data-lmg="500000"><span class="landing-lmg-value">R$ 500.000</span></label></td><td>R$ 3.866,56</td></tr>
+              </tbody>
+            </table>
+            <p class="landing-precos-nota">Valores anuais, em até 2x sem juros.</p>
+            <button type="button" class="landing-plano-btn" data-plano="3">Continuar com a Cobertura Completa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-coberturas" id="landing-coberturas">
+    <h2>O que está <span class="landing-accent">incluso</span></h2>
+    <div class="landing-steps">
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+        <div>
+          <h4>Indenização a terceiros</h4>
+          <p>Proteção financeira para danos materiais, corporais e morais causados no exercício da profissão.</p>
+        </div>
+      </div>
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div>
+          <h4>Custos de defesa</h4>
+          <p>Cobre honorários advocatícios e despesas de defesa em processos judiciais.</p>
+        </div>
+      </div>
+      <div class="landing-step">
+        <div class="landing-step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+        <div>
+          <h4>Suporte em sinistros</h4>
+          <p>Acompanhamento junto à seguradora do início ao fim do processo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-final-cta">
+    <h2>Proteja sua carreira.<br>Escolha sua cobertura agora.</h2>
+    <a href="#landing-planos" class="landing-cta">Ver coberturas</a>
+  </section>
+
+  <footer class="landing-footer">
+    <div class="landing-footer-logos">
+      <img src="logo-fbn.png?v=2" alt="Grupo FBN" class="landing-footer-logo">
+      <span class="landing-logo-sep"></span>
+      <img src="logo-abf.png?v=2" alt="Associado ABF - Associação Brasileira de Franchising" class="landing-footer-logo">
+    </div>
+    <p>Confiança não tem preço, tem valor.</p>
+    <p><a href="https://grupofbn.com.br/politicas-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a></p>
+  </footer>
+</div>
+<div id="welcome-screen">
+  <div id="welcome-card-wrap">
+    <div class="welcome-logo"><img src="logo-fbn.png?v=2" alt="Grupo FBN"></div>
+    <div class="card welcome-card">
+      <div class="welcome-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <h1 class="welcome-titulo">Olá!</h1>
+      <p class="welcome-subtitulo">Faltam poucos passos para contratar seu seguro.</p>
+      <button type="button" id="btn-comecar">
+        Começar
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+      <p class="welcome-aviso">Seus dados serão usados para elaborar sua proposta à Unimed e para contato sobre ela, inclusive por WhatsApp, conforme nossa <a href="https://grupofbn.com.br/politicas-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>. Dúvidas: <a href="mailto:comunicacao@grupofbn.com.br">comunicacao@grupofbn.com.br</a>.</p>
+    </div>
+  </div>
+</div>
+<div id="confirmacao-screen" style="display:none;">
+  <div class="confirmacao-card-wrap">
+    <div class="welcome-logo"><img src="logo-fbn.png?v=2" alt="Grupo FBN"></div>
+    <div class="card welcome-card">
+      <div class="welcome-icon" style="background: linear-gradient(to bottom right, hsl(152 60% 40% / 0.15), hsl(152 60% 40% / 0.05)); color: var(--success);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+      </div>
+      <h1 class="welcome-titulo">Proposta enviada!</h1>
+      <p class="welcome-subtitulo">Fique de olho na sua caixa de e-mail, em breve a seguradora Unimed enviará o contrato para assinatura.</p>
+    </div>
+  </div>
+</div>
+<div class="container" id="form-container" style="display:none;">
+  <h1>Autocontratação RCP</h1>
+  <p class="subtitulo">Faltam poucos passos para contratar seu seguro.</p>
+
+  <div class="progresso">
+    <div class="progresso-trilha"><div class="progresso-trilha-fill" id="progresso-fill"></div></div>
+    <div class="progresso-passos" id="progresso"></div>
+  </div>
+
+  <div class="layout-row" id="layout-row">
+  <div class="card" id="form-card">
+  <form id="form-proposta">
+
+    <fieldset class="step">
+      <legend>Dados do Profissional</legend>
+      <div class="grid">
+        <div class="campo full">
+          <label>Nome Completo <span class="obrig">*</span></label>
+          <input type="text" name="nome_completo" required>
+        </div>
+        <div class="campo">
+          <label>CPF <span class="obrig">*</span></label>
+          <input type="text" name="cpf" id="campo-cpf" required placeholder="000.000.000-00">
+          <span id="cpf-status" class="cpf-status"></span>
+        </div>
+        <div class="campo">
+          <label>Data de Nascimento <span class="obrig">*</span></label>
+          <input type="text" name="data_nascimento" required placeholder="dd/mm/aaaa">
+        </div>
+        <div class="campo">
+          <label>Sexo <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="sexo" value="masculino" required> Masculino</label>
+            <label><input type="radio" name="sexo" value="feminino"> Feminino</label>
+          </div>
+        </div>
+        <div class="campo">
+          <label>E-mail <span class="obrig">*</span></label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="campo">
+          <label>Telefone <span class="opcional">(opcional)</span></label>
+          <input type="text" name="telefone" placeholder="(00) 0000-0000">
+        </div>
+        <div class="campo">
+          <label>Celular / WhatsApp <span class="obrig">*</span></label>
+          <input type="text" name="celular" required placeholder="(00) 00000-0000">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="step">
+      <legend>Endereço do Profissional</legend>
+      <div class="grid">
+        <div class="campo full">
+          <label>Endereço Principal <span class="obrig">*</span></label>
+          <input type="text" name="endereco" required>
+        </div>
+        <div class="campo">
+          <label>Nº <span class="obrig">*</span></label>
+          <input type="text" name="numero" required>
+        </div>
+        <div class="campo">
+          <label>Complemento <span class="opcional">(opcional)</span></label>
+          <input type="text" name="complemento">
+        </div>
+        <div class="campo">
+          <label>Bairro <span class="obrig">*</span></label>
+          <input type="text" name="bairro" required>
+        </div>
+        <div class="campo">
+          <label>Cidade/Estado <span class="obrig">*</span></label>
+          <input type="text" name="cidade_estado" required placeholder="São Paulo/SP">
+        </div>
+        <div class="campo">
+          <label>CEP <span class="obrig">*</span></label>
+          <input type="text" name="cep" id="campo-cep" required placeholder="00000-000">
+          <span id="cep-status" class="cpf-status"></span>
+        </div>
+      </div>
+    </fieldset>
+
+    <input type="hidden" name="tipo_movimento" value="novo">
+
+    <fieldset class="step">
+      <legend data-curto="Declarações">Registro Profissional e Declarações</legend>
+      <div class="grid">
+        <div class="campo">
+          <label>Nº Registro | CRM | CRO | Outros <span class="obrig">*</span></label>
+          <input type="text" name="registro_profissional" required placeholder="CRO-SP 00000">
+        </div>
+        <div class="campo">
+          <label>Estado de Atuação Profissional <span class="obrig">*</span></label>
+          <select name="estado_atuacao" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="AC">AC - Acre</option>
+            <option value="AL">AL - Alagoas</option>
+            <option value="AP">AP - Amapá</option>
+            <option value="AM">AM - Amazonas</option>
+            <option value="BA">BA - Bahia</option>
+            <option value="CE">CE - Ceará</option>
+            <option value="DF">DF - Distrito Federal</option>
+            <option value="ES">ES - Espírito Santo</option>
+            <option value="GO">GO - Goiás</option>
+            <option value="MA">MA - Maranhão</option>
+            <option value="MT">MT - Mato Grosso</option>
+            <option value="MS">MS - Mato Grosso do Sul</option>
+            <option value="MG">MG - Minas Gerais</option>
+            <option value="PA">PA - Pará</option>
+            <option value="PB">PB - Paraíba</option>
+            <option value="PR">PR - Paraná</option>
+            <option value="PE">PE - Pernambuco</option>
+            <option value="PI">PI - Piauí</option>
+            <option value="RJ">RJ - Rio de Janeiro</option>
+            <option value="RN">RN - Rio Grande do Norte</option>
+            <option value="RS">RS - Rio Grande do Sul</option>
+            <option value="RO">RO - Rondônia</option>
+            <option value="RR">RR - Roraima</option>
+            <option value="SC">SC - Santa Catarina</option>
+            <option value="SP">SP - São Paulo</option>
+            <option value="SE">SE - Sergipe</option>
+            <option value="TO">TO - Tocantins</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Fez estágio ou residência médica? <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="fez_estagio" value="sim" required> Sim</label>
+            <label><input type="radio" name="fez_estagio" value="nao"> Não</label>
+          </div>
+        </div>
+        <div class="campo full">
+          <label>O profissional já sofreu qualquer tipo de ação (cível, administrativa ou criminal) em decorrência de suas atividades profissionais? <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="ja_sofreu_acao" value="nao" required> Não</label>
+            <label><input type="radio" name="ja_sofreu_acao" value="sim"> Sim</label>
+          </div>
+        </div>
+        <div class="campo full">
+          <label>O profissional possui conhecimento de qualquer fato que possa originar uma reclamação em decorrência de suas atividades profissionais? <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="conhece_fato_reclamacao" value="nao" required> Não</label>
+            <label><input type="radio" name="conhece_fato_reclamacao" value="sim"> Sim</label>
+          </div>
+        </div>
+        <div class="campo full">
+          <label>O profissional é Pessoa Politicamente Exposta (PEP)? <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="pep" value="nao" required> Não</label>
+            <label><input type="radio" name="pep" value="titular"> Sim, sou PEP Titular</label>
+            <label><input type="radio" name="pep" value="relacionamento"> Sim, possuo Relacionamento Próximo</label>
+          </div>
+        </div>
+      </div>
+      <div class="condicional" id="cond-pep-relacionamento">
+        <div class="grid">
+          <div class="campo">
+            <label>Nome (da PEP)</label>
+            <input type="text" name="pep_nome">
+          </div>
+          <div class="campo">
+            <label>CPF (da PEP)</label>
+            <input type="text" name="pep_cpf">
+          </div>
+          <div class="campo">
+            <label>Grau de Relacionamento com a PEP</label>
+            <input type="text" name="pep_grau_relacionamento">
+          </div>
+        </div>
+      </div>
+      <div class="condicional" id="cond-pep-origem">
+        <div class="campo full">
+          <label>Origem dos recursos (se acima de R$ 10 mil)</label>
+          <div class="checkboxes">
+            <label><input type="checkbox" name="pep_origem_recursos" value="salario"> Salário/Pró-Labore</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="aplicacoes_financeiras"> Aplicações Financeiras</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="comissoes"> Comissões</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="heranca"> Herança</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="imoveis"> Imóveis</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="aposentadoria"> Aposentadoria</label>
+            <label><input type="checkbox" name="pep_origem_recursos" value="outros"> Outros</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="step">
+      <legend>Dados do Seguro</legend>
+      <div class="grid">
+        <div class="campo">
+          <label>Vigência - Início <span class="obrig">*</span></label>
+          <input type="text" name="vigencia_de" required placeholder="dd/mm/aaaa">
+          <span class="cpf-status" id="vigencia-de-status"></span>
+        </div>
+        <div class="campo" id="campo-lmg-wrap">
+          <label>Limite Máximo (LMG) <span class="obrig">*</span></label>
+          <select name="lmg" id="campo-lmg" required>
+            <option value="R$ 50.000,00" data-lmg="50000">R$ 50.000,00</option>
+            <option value="R$ 70.000,00" data-lmg="70000">R$ 70.000,00</option>
+            <option value="R$ 100.000,00" data-lmg="100000">R$ 100.000,00</option>
+            <option value="R$ 150.000,00" data-lmg="150000">R$ 150.000,00</option>
+            <option value="R$ 250.000,00" data-lmg="250000">R$ 250.000,00</option>
+            <option value="R$ 500.000,00" data-lmg="500000">R$ 500.000,00</option>
+            <option value="R$ 600.000,00" data-lmg="600000">R$ 600.000,00</option>
+          </select>
+        </div>
+        <!-- Franquia | POS, Despesas Emergenciais e Cobertura Basica removidos:
+             fixos em "SEM FRANQUIA", "5%" e "Fixo (70%/30%)" no script. -->
+        <div class="campo full" id="campo-plano-selecionavel">
+          <label>Cobertura contratada <span class="obrig">*</span></label>
+          <div class="modalidade-cards">
+            <label class="modalidade-card">
+              <input type="radio" name="modalidade" value="1" required checked>
+              <span>
+                <span class="titulo">Cobertura Básica</span>
+                <span class="desc">Odontologia COM implante/cirurgia/ortodontia (sem estética) + demais especialidades</span>
+              </span>
+            </label>
+            <label class="modalidade-card">
+              <input type="radio" name="modalidade" value="2">
+              <span>
+                <span class="titulo">Cobertura Avançada</span>
+                <span class="desc">Cobertura Básica + Cirurgia bucomaxilofacial e/ou odontologia com prática estética</span>
+              </span>
+            </label>
+            <label class="modalidade-card">
+              <input type="radio" name="modalidade" value="3">
+              <span>
+                <span class="titulo">Cobertura Completa</span>
+                <span class="desc">Cobertura Avançada + Odontologia com harmonização facial e/ou aplicação de toxina botulínica</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="campo full">
+          <label>O profissional possui ou já possuiu apólice de Seguro de Responsabilidade Civil Profissional junto a outra seguradora? <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="outros_seguros" value="nao" required checked> Não</label>
+            <label><input type="radio" name="outros_seguros" value="sim"> Sim</label>
+          </div>
+        </div>
+      </div>
+      <div class="condicional" id="cond-outros-seguros">
+        <div class="grid">
+          <div class="campo">
+            <label>Nome da Seguradora</label>
+            <input type="text" name="outros_seguros_nome">
+          </div>
+          <div class="campo">
+            <label>Limite da Apólice</label>
+            <input type="text" name="outros_seguros_limite" placeholder="R$ 0,00">
+          </div>
+          <div class="campo">
+            <label>Período de Vigência - De</label>
+            <input type="text" name="outros_seguros_vigencia_de" placeholder="dd/mm/aaaa">
+          </div>
+          <div class="campo">
+            <label>Período de Vigência - Até</label>
+            <input type="text" name="outros_seguros_vigencia_ate" placeholder="dd/mm/aaaa">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Coberturas Adicionais removida: Cobertura para Chefe de Equipe, Cobertura para
+         Diretor Clinico e/ou Tecnico e Socio/titular de microempresa sao todas fixas
+         em SIM (produto padrao), nao mudam mais por caso. -->
+
+
+    <!-- Extensao do Periodo de Retroatividade removida: so se aplica a Renovacao Congenere,
+         e este fluxo e exclusivamente para Seguro Novo. -->
+
+    <fieldset class="step">
+      <legend>Forma de Pagamento</legend>
+      <div class="grid">
+        <div class="campo">
+          <label>Prêmio Total Anual <span class="opcional">(calculado - Cobertura x LMG)</span></label>
+          <input type="text" name="premio_total_anual" id="campo-premio" required readonly style="background:#f0f2f4;">
+        </div>
+        <div class="campo">
+          <label>Quantidade de Parcelas <span class="obrig">*</span></label>
+          <div class="radios">
+            <label><input type="radio" name="qtde_parcelas" value="1" required checked> 1x</label>
+            <label><input type="radio" name="qtde_parcelas" value="2"> 2x sem juros</label>
+          </div>
+        </div>
+      </div>
+      <!-- Opcao de Pagamento removida: fixa em Boleto (nao ha mais Debito em Conta neste fluxo). -->
+      <div class="campo" style="margin-top:12px;">
+        <label>Data para Vencimento <span class="opcional">(opcional)</span></label>
+        <input type="text" name="boleto_vencimento" placeholder="dd/mm/aaaa">
+      </div>
+    </fieldset>
+
+  </form>
+
+  <div class="rodape">
+    <span id="status"></span>
+    <button type="button" id="btn-voltar">Voltar</button>
+    <button type="button" id="btn-avancar">Avançar</button>
+    <button type="button" id="btn-gerar" style="display:none;">Enviar dados para análise</button>
+  </div>
+  </div>
+
+  <aside class="card plano-fixo-card" id="plano-fixo-card" style="display:none;">
+    <button type="button" class="plano-fixo-header" id="plano-fixo-toggle">
+      <span>
+        <span class="plano-fixo-badge">Cobertura escolhida</span>
+        <h3 id="plano-fixo-titulo">Cobertura Básica</h3>
+      </span>
+      <svg class="plano-fixo-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="plano-fixo-content" id="plano-fixo-content">
+      <div class="plano-fixo-content-inner">
+        <p id="plano-fixo-desc"></p>
+        <p id="plano-fixo-lmg" class="plano-fixo-lmg" style="display:none;"></p>
+        <p id="plano-fixo-premio" class="plano-fixo-premio" style="display:none;"></p>
+      </div>
+    </div>
+  </aside>
+  </div>
+</div>
+
+<script>
+// ---- Wizard: uma etapa por vez ----
+const passos = Array.from(document.querySelectorAll("fieldset.step"));
+const nomesPasso = passos.map(f => {
+  const legenda = f.querySelector("legend");
+  return legenda.dataset.curto || legenda.textContent;
+});
+let passoAtual = 0;
+
+function renderizarProgresso() {
+  const cont = document.getElementById("progresso");
+  cont.innerHTML = "";
+  passos.forEach((_, i) => {
+    const passoDiv = document.createElement("div");
+    passoDiv.className = "progresso-passo";
+
+    const bolinha = document.createElement("div");
+    bolinha.className = "bolinha" + (i < passoAtual ? " feito" : i === passoAtual ? " atual" : "");
+    bolinha.textContent = i < passoAtual ? "✓" : (i + 1);
+
+    const rotulo = document.createElement("span");
+    rotulo.className = "rotulo" + (i === passoAtual ? " atual" : "");
+    rotulo.textContent = nomesPasso[i];
+
+    passoDiv.appendChild(bolinha);
+    passoDiv.appendChild(rotulo);
+    cont.appendChild(passoDiv);
+  });
+
+  const inset = (50 / passos.length) + "%";
+  const trilha = document.querySelector(".progresso-trilha");
+  trilha.style.left = inset;
+  trilha.style.right = inset;
+
+  const pct = passos.length > 1 ? (passoAtual / (passos.length - 1)) * 100 : 0;
+  document.getElementById("progresso-fill").style.width = pct + "%";
+}
+
+function mostrarPasso(indice) {
+  passos.forEach((f, i) => f.classList.toggle("ativo", i === indice));
+  passoAtual = indice;
+  renderizarProgresso();
+  document.getElementById("btn-voltar").style.display = indice === 0 ? "none" : "inline-block";
+  document.getElementById("btn-avancar").style.display = indice === passos.length - 1 ? "none" : "inline-block";
+  document.getElementById("btn-gerar").style.display = indice === passos.length - 1 ? "inline-block" : "none";
+  document.getElementById("status").textContent = "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function passoAtualValido() {
+  const invalido = passos[passoAtual].querySelector(":invalid");
+  if (invalido) {
+    invalido.reportValidity();
+    return false;
+  }
+  return true;
+}
+
+const LEAD_WEBHOOK_URL = "https://n8n.grupofbn.com.br/webhook/rcp-sorridents-lead";
+const ABANDONO_WEBHOOK_URL = "https://n8n.grupofbn.com.br/webhook/rcp-sorridents-abandono";
+const NOVO_CASO_WEBHOOK_URL = "https://n8n.grupofbn.com.br/webhook/rcp-sorridents-novo-caso";
+// Token publico (fica visivel no codigo da pagina): so identifica chamadas desta pagina.
+// A protecao real esta no n8n (origem permitida + limite de envios por IP).
+const LEAD_WEBHOOK_SECRET = "vIX6Tha0AKmcgSNLYxT8V57saS-YTTUU";
+// Um id por preenchimento, pra ligar o lead parcial ao abandono e a conclusao (status no funil).
+const CASO_ID = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
+let leadEnviado = false;
+let formularioConcluido = false;
+
+function enviarLeadParcial() {
+  if (leadEnviado) return;
+  const dados = new FormData(document.getElementById("form-proposta"));
+  const payload = {
+    caso_id: CASO_ID,
+    nome_completo: dados.get("nome_completo") || "",
+    cpf: dados.get("cpf") || "",
+    data_nascimento: dados.get("data_nascimento") || "",
+    sexo: dados.get("sexo") || "",
+    email: dados.get("email") || "",
+    telefone: dados.get("telefone") || "",
+    celular: dados.get("celular") || "",
+  };
+  if (!payload.nome_completo && !payload.email) return;
+  leadEnviado = true;
+  fetch(LEAD_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Webhook-Secret": LEAD_WEBHOOK_SECRET },
+    body: JSON.stringify(payload),
+  }).catch(() => {});
+  resetIdleTimer();
+}
+
+let abandonoEnviado = false;
+let idleTimer = null;
+const IDLE_LIMITE_MS = 60 * 60 * 1000; // 1h ociosa com a aba aberta
+
+function dispararAbandono() {
+  if (!leadEnviado || formularioConcluido || abandonoEnviado) return;
+  const dados = new FormData(document.getElementById("form-proposta"));
+  const payload = {
+    caso_id: CASO_ID,
+    nome_completo: dados.get("nome_completo") || "",
+    celular: dados.get("celular") || "",
+    secret: LEAD_WEBHOOK_SECRET,
+  };
+  if (!payload.celular) return;
+  abandonoEnviado = true;
+  if (idleTimer) clearTimeout(idleTimer);
+  // sendBeacon funciona tanto no fechamento da aba (pagehide) quanto com a aba ainda aberta.
+  const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+  navigator.sendBeacon(ABANDONO_WEBHOOK_URL, blob);
+}
+
+function resetIdleTimer() {
+  if (idleTimer) clearTimeout(idleTimer);
+  if (!leadEnviado || formularioConcluido || abandonoEnviado) return;
+  idleTimer = setTimeout(dispararAbandono, IDLE_LIMITE_MS);
+}
+
+["mousemove", "keydown", "input", "click", "scroll"].forEach((evento) => {
+  document.addEventListener(evento, resetIdleTimer, { passive: true });
+});
+
+window.addEventListener("pagehide", dispararAbandono);
+
+document.getElementById("btn-avancar").addEventListener("click", () => {
+  if (!passoAtualValido()) return;
+  if (passoAtual === 0) enviarLeadParcial();
+  mostrarPasso(passoAtual + 1);
+});
+
+document.getElementById("btn-voltar").addEventListener("click", () => {
+  mostrarPasso(passoAtual - 1);
+});
+
+mostrarPasso(0);
+
+const temPlanoNaUrl = new URLSearchParams(window.location.search).get("plano");
+if (!temPlanoNaUrl) {
+  document.getElementById("welcome-screen").style.display = "none";
+} else {
+  document.getElementById("landing-screen").style.display = "none";
+}
+document.querySelectorAll(".landing-plano-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.closest(".landing-plano-card").classList.toggle("aberto");
+  });
+});
+document.querySelectorAll(".landing-plano-btn[data-plano]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".landing-plano-card");
+    const lmgChecked = card?.querySelector('input[type="radio"]:checked');
+    const lmg = lmgChecked ? lmgChecked.dataset.lmg : "";
+    window.location.href = "?plano=" + btn.dataset.plano + (lmg ? "&lmg=" + lmg : "");
+  });
+});
+
+document.getElementById("btn-comecar").addEventListener("click", () => {
+  const welcome = document.getElementById("welcome-screen");
+  welcome.classList.add("saindo");
+  setTimeout(() => {
+    welcome.style.display = "none";
+    document.getElementById("form-container").style.display = "block";
+    window.scrollTo({ top: 0 });
+  }, 600);
+});
+
+// ---- Mascaras de campo ----
+function aplicarMascara(input, mascara) {
+  if (!input) return;
+  const maxDigitos = (mascara.match(/0/g) || []).length;
+  input.setAttribute("maxlength", mascara.length);
+  input.setAttribute("inputmode", "numeric");
+  input.addEventListener("input", () => {
+    const digitos = input.value.replace(/\D/g, "").slice(0, maxDigitos);
+    let saida = "";
+    let di = 0;
+    for (let i = 0; i < mascara.length && di < digitos.length; i++) {
+      saida += mascara[i] === "0" ? digitos[di++] : mascara[i];
+    }
+    input.value = saida;
+  });
+}
+
+aplicarMascara(document.querySelector('input[name="cpf"]'), "000.000.000-00");
+
+function validaCPFLocal(cpf) {
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+  let soma = 0, i;
+  for (i = 0; i < 9; i++) soma += parseInt(cpf[i]) * (10 - i);
+  let resto = 11 - (soma % 11);
+  if (resto >= 10) resto = 0;
+  if (resto !== parseInt(cpf[9])) return false;
+  soma = 0;
+  for (i = 0; i < 10; i++) soma += parseInt(cpf[i]) * (11 - i);
+  resto = 11 - (soma % 11);
+  if (resto >= 10) resto = 0;
+  return resto === parseInt(cpf[10]);
+}
+
+const CONSULTA_CPF_URL = "https://n8n.grupofbn.com.br/webhook/consulta-cpf-sorridents-v2";
+const CONSULTA_CPF_SECRET = "vIX6Tha0AKmcgSNLYxT8V57saS-YTTUU";
+let ultimoCpfConsultado = "";
+const campoCpf = document.getElementById("campo-cpf");
+const cpfStatus = document.getElementById("cpf-status");
+campoCpf.addEventListener("input", async () => {
+  const digitos = campoCpf.value.replace(/\D/g, "");
+  if (digitos.length !== 11) {
+    cpfStatus.textContent = "";
+    cpfStatus.className = "cpf-status";
+    return;
+  }
+  if (digitos === ultimoCpfConsultado) return;
+  if (!validaCPFLocal(digitos)) {
+    cpfStatus.textContent = "CPF inválido";
+    cpfStatus.className = "cpf-status erro";
+    return;
+  }
+  ultimoCpfConsultado = digitos;
+  cpfStatus.textContent = "Consultando...";
+  cpfStatus.className = "cpf-status";
+  try {
+    const resp = await fetch(CONSULTA_CPF_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-app-secret": CONSULTA_CPF_SECRET },
+      body: JSON.stringify({ cpf: digitos })
+    });
+    const data = await resp.json();
+    if (data.ok) {
+      const campoNome = document.querySelector('input[name="nome_completo"]');
+      const campoDataNasc = document.querySelector('input[name="data_nascimento"]');
+      if (campoNome && !campoNome.value) campoNome.value = data.nome_completo;
+      if (campoDataNasc && !campoDataNasc.value) campoDataNasc.value = data.data_nascimento;
+      cpfStatus.textContent = "Dados preenchidos automaticamente";
+      cpfStatus.className = "cpf-status sucesso";
+    } else {
+      cpfStatus.textContent = data.message || "Não foi possível consultar o CPF";
+      cpfStatus.className = "cpf-status erro";
+    }
+  } catch (e) {
+    cpfStatus.textContent = "";
+    cpfStatus.className = "cpf-status";
+  }
+});
+aplicarMascara(document.querySelector('input[name="pep_cpf"]'), "000.000.000-00");
+aplicarMascara(document.querySelector('input[name="data_nascimento"]'), "00/00/0000");
+aplicarMascara(document.querySelector('input[name="vigencia_de"]'), "00/00/0000");
+
+// Vigencia so pode comecar da data do preenchimento pra frente (nao aceita data passada).
+const campoVigenciaDe = document.querySelector('input[name="vigencia_de"]');
+const vigenciaDeStatus = document.getElementById("vigencia-de-status");
+function validarVigenciaDe() {
+  const v = campoVigenciaDe.value;
+  vigenciaDeStatus.textContent = "";
+  vigenciaDeStatus.className = "cpf-status";
+  if (v.length < 10) { campoVigenciaDe.setCustomValidity(""); return; }
+  const [dia, mes, ano] = v.split("/").map(Number);
+  const data = new Date(ano, mes - 1, dia);
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  const dataValida = data.getFullYear() === ano && data.getMonth() === mes - 1 && data.getDate() === dia;
+  if (!dataValida) {
+    campoVigenciaDe.setCustomValidity("Data invalida");
+    vigenciaDeStatus.textContent = "Data inválida. Confira dia, mês e ano";
+    vigenciaDeStatus.className = "cpf-status erro";
+  } else if (data < hoje) {
+    campoVigenciaDe.setCustomValidity("Data anterior a hoje");
+    vigenciaDeStatus.textContent = "A vigência não pode começar antes de hoje";
+    vigenciaDeStatus.className = "cpf-status erro";
+  } else {
+    campoVigenciaDe.setCustomValidity("");
+  }
+}
+campoVigenciaDe.addEventListener("input", validarVigenciaDe);
+campoVigenciaDe.addEventListener("blur", validarVigenciaDe);
+aplicarMascara(document.querySelector('input[name="boleto_vencimento"]'), "00/00/0000");
+aplicarMascara(document.querySelector('input[name="outros_seguros_vigencia_de"]'), "00/00/0000");
+aplicarMascara(document.querySelector('input[name="outros_seguros_vigencia_ate"]'), "00/00/0000");
+aplicarMascara(document.querySelector('input[name="telefone"]'), "(00) 0000-0000");
+aplicarMascara(document.querySelector('input[name="celular"]'), "(00) 00000-0000");
+aplicarMascara(document.querySelector('input[name="cep"]'), "00000-000");
+
+let ultimoCepConsultado = "";
+const campoCep = document.getElementById("campo-cep");
+const cepStatus = document.getElementById("cep-status");
+campoCep.addEventListener("input", async () => {
+  const digitos = campoCep.value.replace(/\D/g, "");
+  if (digitos.length !== 8) {
+    cepStatus.textContent = "";
+    cepStatus.className = "cpf-status";
+    return;
+  }
+  if (digitos === ultimoCepConsultado) return;
+  ultimoCepConsultado = digitos;
+  cepStatus.textContent = "Consultando...";
+  cepStatus.className = "cpf-status";
+  try {
+    const resp = await fetch("https://viacep.com.br/ws/" + digitos + "/json/");
+    const data = await resp.json();
+    if (data.erro) {
+      cepStatus.textContent = "CEP não encontrado";
+      cepStatus.className = "cpf-status erro";
+      return;
+    }
+    const campoEndereco = document.querySelector('input[name="endereco"]');
+    const campoBairro = document.querySelector('input[name="bairro"]');
+    const campoCidadeEstado = document.querySelector('input[name="cidade_estado"]');
+    if (campoEndereco && !campoEndereco.value) campoEndereco.value = data.logradouro || "";
+    if (campoBairro && !campoBairro.value) campoBairro.value = data.bairro || "";
+    if (campoCidadeEstado && !campoCidadeEstado.value && data.localidade) campoCidadeEstado.value = data.localidade + "/" + data.uf;
+    cepStatus.textContent = "Endereço preenchido automaticamente";
+    cepStatus.className = "cpf-status sucesso";
+  } catch (e) {
+    cepStatus.textContent = "";
+    cepStatus.className = "cpf-status";
+  }
+});
+
+const OPT_IMPLANTE = "Odontologia COM implante, cirurgia e ortodontia  *Não inclui cirurgia bucomaxilofacial e odontologia com prática estética";
+const OPT_DEMAIS = "Odontologia: demais especialidades *Não inclui cirurgia bucomaxilofacial, odontologia com prática estética, implante, cirurgia e ortodontia";
+const OPT_BUCOMAX = "Cirurgia bucomaxilofacial e/ou odontologia com prática estética¹";
+const OPT_HARMONIZACAO = "Odontologia com harmonização facial e/ou aplicação de toxina botulínica¹";
+
+const MODALIDADES = {
+  "1": [OPT_IMPLANTE, OPT_DEMAIS],
+  "2": [OPT_BUCOMAX, OPT_IMPLANTE, OPT_DEMAIS],
+  "3": [OPT_HARMONIZACAO, OPT_BUCOMAX, OPT_IMPLANTE, OPT_DEMAIS],
+};
+
+function ligarCondicional(nomeRadio, valoresQueMostram, idCondicional) {
+  const condicional = document.getElementById(idCondicional);
+  document.querySelectorAll(`input[name="${nomeRadio}"]`).forEach(r => {
+    r.addEventListener("change", () => {
+      condicional.classList.toggle("show", valoresQueMostram.includes(r.value) && r.checked);
+    });
+  });
+}
+
+ligarCondicional("pep", ["relacionamento"], "cond-pep-relacionamento");
+ligarCondicional("pep", ["titular"], "cond-pep-origem");
+ligarCondicional("outros_seguros", ["sim"], "cond-outros-seguros");
+
+// Tabela de preco (Premio Total Anual) por Modalidade x LMG.
+// Preco ja inclui Chefe de Equipe/RT - essas coberturas nao alteram o valor.
+const TABELA_PRECO = {
+  "1": { 50000: 171.88, 70000: 240.64, 100000: 343.77, 150000: 515.65, 250000: 742.54, 500000: 1062.24, 600000: 1165.37 },
+  "2": { 50000: 457.90, 70000: 641.06, 100000: 915.80, 150000: 1373.69, 250000: 1978.12, 500000: 2829.81 },
+  "3": { 50000: 625.66, 70000: 875.92, 100000: 1251.31, 150000: 1876.97, 250000: 2702.84, 500000: 3866.56 },
+};
+
+function formatarReal(valor) {
+  return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function atualizarPremio() {
+  const modalidade = document.querySelector('input[name="modalidade"]:checked');
+  const lmgSelect = document.getElementById("campo-lmg");
+  const campoPremio = document.getElementById("campo-premio");
+  if (!modalidade || !lmgSelect.value) {
+    campoPremio.value = "";
+    return;
+  }
+  const lmgKey = lmgSelect.selectedOptions[0].dataset.lmg;
+  const valor = TABELA_PRECO[modalidade.value]?.[lmgKey];
+  campoPremio.value = valor !== undefined ? formatarReal(valor) : "";
+}
+
+function alternarOpcaoLmg(lmgKey, permitida, lmgSelect) {
+  const opcao = lmgSelect.querySelector(`option[data-lmg="${lmgKey}"]`);
+  if (!opcao) return;
+  opcao.disabled = !permitida;
+  opcao.hidden = !permitida;
+  if (!permitida && opcao.selected) lmgSelect.value = "";
+}
+
+function atualizarOpcaoLmg50k() {
+  const modalidade = document.querySelector('input[name="modalidade"]:checked');
+  const lmgSelect = document.getElementById("campo-lmg");
+  alternarOpcaoLmg("50000", modalidade && (modalidade.value === "2" || modalidade.value === "3"), lmgSelect);
+  alternarOpcaoLmg("600000", modalidade && modalidade.value === "1", lmgSelect);
+}
+
+document.querySelectorAll('input[name="modalidade"]').forEach(r => r.addEventListener("change", () => {
+  atualizarOpcaoLmg50k();
+  atualizarPremio();
+}));
+document.getElementById("campo-lmg").addEventListener("change", atualizarPremio);
+atualizarOpcaoLmg50k();
+atualizarPremio();
+
+const PLANO_INFO = {
+  "1": { titulo: "Cobertura Básica", desc: "Odontologia COM implante/cirurgia/ortodontia (sem estética) + demais especialidades" },
+  "2": { titulo: "Cobertura Avançada", desc: "Cobertura Básica + Cirurgia bucomaxilofacial e/ou odontologia com prática estética" },
+  "3": { titulo: "Cobertura Completa", desc: "Cobertura Avançada + Odontologia com harmonização facial e/ou aplicação de toxina botulínica" },
+};
+
+function aplicarPlanoDaUrl() {
+  const plano = new URLSearchParams(window.location.search).get("plano");
+  if (!PLANO_INFO[plano]) return;
+
+  const radio = document.querySelector(`input[name="modalidade"][value="${plano}"]`);
+  if (!radio) return;
+  radio.checked = true;
+  atualizarOpcaoLmg50k();
+
+  document.getElementById("campo-plano-selecionavel").style.display = "none";
+
+  const info = PLANO_INFO[plano];
+  document.getElementById("plano-fixo-titulo").textContent = info.titulo;
+  document.getElementById("plano-fixo-desc").textContent = info.desc;
+  document.getElementById("plano-fixo-card").style.display = "block";
+  document.getElementById("form-container").classList.add("com-plano");
+
+  const lmg = new URLSearchParams(window.location.search).get("lmg");
+  const lmgSelect = document.getElementById("campo-lmg");
+  const lmgOption = lmgSelect.querySelector(`option[data-lmg="${lmg}"]`);
+  if (lmgOption) {
+    lmgSelect.value = lmgOption.value;
+    document.getElementById("campo-lmg-wrap").style.display = "none";
+    const lmgInfo = document.getElementById("plano-fixo-lmg");
+    lmgInfo.textContent = "LMG: " + lmgOption.value;
+    lmgInfo.style.display = "block";
+
+    const lmgKey = lmgOption.dataset.lmg;
+    const valorAnual = TABELA_PRECO[plano]?.[lmgKey];
+    if (valorAnual !== undefined) {
+      const premioInfo = document.getElementById("plano-fixo-premio");
+      premioInfo.innerHTML = "<strong>" + formatarReal(valorAnual) + "/ano</strong><span>Em até 2x sem juros</span>";
+      premioInfo.style.display = "block";
+    }
+  }
+
+  atualizarPremio();
+}
+aplicarPlanoDaUrl();
+
+document.getElementById("plano-fixo-toggle").addEventListener("click", () => {
+  document.getElementById("plano-fixo-card").classList.toggle("aberto");
+});
+
+document.getElementById("btn-gerar").addEventListener("click", async () => {
+  const form = document.getElementById("form-proposta");
+  const status = document.getElementById("status");
+
+  const invalido = form.querySelector(":invalid");
+  if (invalido) {
+    const passoDoInvalido = passos.indexOf(invalido.closest(".step"));
+    if (passoDoInvalido !== -1) mostrarPasso(passoDoInvalido);
+    invalido.reportValidity();
+    status.textContent = "Preencha os campos obrigatórios (*) antes de gerar.";
+    status.className = "erro";
+    return;
+  }
+
+  const formData = new FormData(form);
+  const dados = {};
+  for (const [key, value] of formData.entries()) {
+    if (key === "pep_origem_recursos") {
+      if (!dados[key]) dados[key] = [];
+      dados[key].push(value);
+    } else {
+      dados[key] = value;
+    }
+  }
+
+  const especialidades = MODALIDADES[dados.modalidade] || [];
+  especialidades.forEach((opt, i) => {
+    dados[`especialidade_${i + 1}`] = opt;
+  });
+  delete dados.modalidade;
+  dados.caso_id = CASO_ID;
+
+  // Vigencia - Ate = Vigencia - Inicio + 1 ano (seguro sempre tem vigencia de 1 ano)
+  const partesData = (dados.vigencia_de || "").split("/");
+  if (partesData.length === 3) {
+    const [dia, mes, ano] = partesData;
+    dados.vigencia_ate = `${dia}/${mes}/${parseInt(ano, 10) + 1}`;
+  }
+
+  const json = JSON.stringify(dados, null, 2);
+
+  document.getElementById("btn-gerar").disabled = true;
+  status.textContent = "Enviando...";
+  status.className = "ok";
+
+  try {
+    const resp = await fetch(NOVO_CASO_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Webhook-Secret": LEAD_WEBHOOK_SECRET },
+      body: json,
+    });
+    if (resp.ok) {
+      formularioConcluido = true;
+      document.getElementById("form-container").style.display = "none";
+      document.getElementById("confirmacao-screen").style.display = "flex";
+      window.scrollTo({ top: 0 });
+      return;
+    } else {
+      status.textContent = "Erro ao enviar a proposta. Tente novamente ou avise o suporte.";
+      status.className = "erro";
+      console.error(resp.status);
+    }
+  } catch (e) {
+    status.textContent = "Nao foi possivel enviar a proposta. Tente novamente ou avise o suporte.";
+    status.className = "erro";
+    console.error(e);
+  }
+  document.getElementById("btn-gerar").disabled = false;
+});
+</script>
+</body>
+</html>
